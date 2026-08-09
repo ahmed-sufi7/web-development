@@ -15,9 +15,24 @@
 
 
 
-function printInfo(name,age){
-    console.log(`${name}'s age is ${age}`);
+// function printInfo(name,age){
+//     console.log(`${name}'s age is ${age}`);
+// }
+
+// printInfo("Ahmed Raza", 18);
+// printInfo("Ahmed Raza");   // Ahmed Raza's age is undefined
+
+
+// Higher Order Function
+function multGreet(func, count) {
+    for(let i = 1; i<=count; i++){
+        func();
+    }
 }
 
-printInfo("Ahmed Raza", 18);
-printInfo("Ahmed Raza");   // Ahmed Raza's age is undefined
+
+let greet = function(){
+    console.log("Hello");
+}
+
+multGreet(greet,10)
