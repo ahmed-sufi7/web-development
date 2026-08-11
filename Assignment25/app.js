@@ -12,12 +12,17 @@
 
 
 
-let isEven = (num) => {
-    if (num%2 == 0){
-        console.log("the number is even")
-    } else {
-        console.log("the number is odd")
-    }
-}
+// let isEven = (num) => {
+//     if (num%2 == 0){
+//         console.log("the number is even")
+//     } else {
+//         console.log("the number is odd")
+//     }
+// }
 
-isEven(9);
+// isEven(9);
+
+
+
+const object = { message: 'Hello,World!', logMessage() { console.log(this.message); } }; 
+setTimeout(object.logMessage(), 1000);
