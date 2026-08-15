@@ -45,3 +45,15 @@ heading.classList.remove('green');
 
 heading.classList.toggle('underline');
 heading.classList.toggle('underline');
+
+
+
+
+let newP = document.createElement('p');
+newP.innerText = "This is a new paragraph added by JS";
+let box = document.querySelector('.box');
+box.appendChild(newP)
+
+let btn = document.createElement('button');
+btn.innerText = "Click me!";
+newP.append(btn);
