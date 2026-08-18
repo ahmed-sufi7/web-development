@@ -1,11 +1,26 @@
-console.log("Hello world!")
+// console.log("Hello world!")
 
-let a = 5;
-let b = 12;
-let sum = a+b;
-console.log("Sum is:", sum); 
+// let a = 5;
+// let b = 12;
+// let sum = a+b;
+// console.log("Sum is:", sum); 
 
 
-let str = "                  hello world                       ";
-newStr=str.trim();
-console.log(newStr);
+// let str = "                  hello world                       ";
+// newStr=str.trim();
+// console.log(newStr);
+
+
+function one() {
+    return 1;
+}
+function two() {
+    return one() + one();
+}
+
+function three(){
+    let ans = two() + one();
+    console.log(ans);
+}
+
+three();
