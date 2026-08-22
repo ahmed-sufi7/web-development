@@ -22,17 +22,22 @@ function saveToDB(data) {
 
 // Promise chaining to prevent callback hell
 saveToDB("apna college")
-  .then(() => {
+  .then((result) => {
     console.log("Data 1 saved");
+    console.log("result of promise:", result);
     return saveToDB("apnacollege2")
   })
-  .then(()=>{
+  .then((result)=>{
     console.log("Data 2 saved");
+    console.log(result);
     return saveToDB("Hello world");
   })
-  .then(()=>{
+  .then((result)=>{
     console.log("Data 3 saved");
+    console.log(result);
+    
   })
-  .catch(() => {
+  .catch((error) => {
     console.log("promise was rejected"); //not give error but an log saying the promise was rejected
+    console.log(error);
   });
