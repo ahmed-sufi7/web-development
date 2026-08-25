@@ -6,7 +6,12 @@
 
 // console.log(process.argv);
 
-let math = require("./math.js");
+// let math = require("./math.js");
 
-console.log(math);
-console.log(math.sum(2, 4));
+// console.log(math);
+// console.log(math.sum(2, 4));
+
+
+let fruits = require("./Fruits");
+
+console.log(fruits[0].name);
