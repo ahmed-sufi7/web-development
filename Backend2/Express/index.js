@@ -8,21 +8,36 @@ app.listen(3000,()=>{
 
 
 app.get("/", (req, res) => {
-    res.send("You contacted to root path");
-});
-app.get("/apple", (req, res) => {
-    res.send("You contacted to apple path");
-});
-app.get("/banana", (req, res) => {
-    res.send("You contacted to banana path");
-});
-app.get("/*splat", (req, res) => {
-    res.send("This path does not exists");
+    res.send("Hello, I'm root path. You are welcome.");
 });
 
-app.post("/",(req,res)=>{
-    res.send("you sent a post request")
+app.get("/:username/:id", (req, res) => {
+    let {username, id} = req.params;
+    // let username = req.params.username;
+    res.send(`Welcome @${username}!`)
 })
+
+app.get("/search",(req,res) => {
+    let {q} = req.query;
+    if (!q){
+        res.send("nothing searched");
+    }
+    res.send(`The search is for ${q} `);
+})
+
+// app.get("/apple", (req, res) => {
+//     res.send("You contacted to apple path");
+// });
+// app.get("/banana", (req, res) => {
+//     res.send("You contacted to banana path");
+// });
+// app.get("/*splat", (req, res) => {
+//     res.send("This path does not exists");
+// });
+
+// app.post("/",(req,res)=>{
+//     res.send("you sent a post request")
+// })
 
 
 // app.use((req,res)=>{
