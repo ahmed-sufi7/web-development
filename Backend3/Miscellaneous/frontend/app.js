@@ -1,12 +1,23 @@
 // constructor
-function Person(name,age){
-    this.name = name;
-    this.age = age;
+// function Person(name,age){
+//     this.name = name;
+//     this.age = age;
+// }
+
+// Person.prototype.talk = function(){
+//     console.log(`Hi, I'm ${this.name}`)
+// }
+
+class Person{
+    constructor(name,age){
+        this.name = name;
+        this.age = age;
+    }
+    talk(){
+        console.log(`Hello, I'm ${this.name}`); 
+    }
 }
 
-Person.prototype.talk = function(){
-    console.log(`Hi, I'm ${this.name}`)
-}
 
 let p1 = new Person("adam",35);
 let p2 = new Person("Eve",30); 
