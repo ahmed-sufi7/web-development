@@ -12,14 +12,17 @@ app.use(express.static(path.join(__dirname,"public"))); //setting path for publi
 
 let posts = [
     {
+        id: "1a",
         username: "apnacollege",
         content: "I love coding",
     },
     {
+        id: "2b",
         username: "Ahmedraza",
         content: "You have to work hard",
     },
     {
+        id: "3c",
         username: "rahul",
         content: "I got my first internship",
     },
@@ -37,6 +40,12 @@ app.post("/posts", (req,res)=>{
     let {username, content}= req.body;
     posts.push({username,content});
     res.redirect("/posts")
+});
+
+app.get("/posts/:id",(req,res)=>{
+    let {id} = req.params;
+    let post = posts.find((p)=> id === p.id);
+    res.render("show.ejs",{post})
 })
 
 app.listen(port,()=>{
