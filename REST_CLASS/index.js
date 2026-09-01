@@ -10,8 +10,23 @@ app.set("views", path.join(__dirname,"views")); //setting path for views folder
 
 app.use(express.static(path.join(__dirname,"public"))); //setting path for public folder
 
-app.get("/",(req,res)=>{
-    res.send("server working well!");
+let posts = [
+    {
+        username: "apnacollege",
+        content: "I love coding",
+    },
+    {
+        username: "Ahmedraza",
+        content: "You have to work hard",
+    },
+    {
+        username: "rahul",
+        content: "I got my first internship",
+    },
+]
+
+app.get("/posts",(req,res)=>{
+    res.render("index.ejs", {posts})
 })
 
 app.listen(port,()=>{
