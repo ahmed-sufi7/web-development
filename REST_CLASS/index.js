@@ -8,7 +8,7 @@ app.use(express.urlencoded({extended:true})); //So that express understands the 
 app.set("view engine", "ejs"); //setting view engine
 app.set("views", path.join(__dirname,"views")); //setting path for views folder
 
-app.set(express.static(path.join(__dirname,"public"))); //setting path for public folder
+app.use(express.static(path.join(__dirname,"public"))); //setting path for public folder
 
 app.get("/",(req,res)=>{
     res.send("server working well!");
