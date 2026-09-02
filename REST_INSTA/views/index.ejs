@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1>Instagram</h1>
+    <% for (post of posts) { %>
+        <div class="posts">
+            <h3>@<%= post.username %></h3>
+            <img src="<%= post.image %>" alt="A image">
+            <p class="caption"><%= post.caption %></p>
+        </div>
+    <% } %>
+    <a href="http://localhost:8080/feed/new">Creat new post</a>
+</body>
+</html>

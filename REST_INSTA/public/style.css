@@ -1,0 +1,12 @@
+h1{
+    font-style: italic;
+}
+
+img {
+    height: 200px;
+    width: 200px;
+}
+
+.posts{
+    background-color: aliceblue;
+}
