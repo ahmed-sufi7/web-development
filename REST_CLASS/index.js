@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const port = 8080;
 const path = require("path"); //To use the folders views and public
+const {v4: uuidv4} = require('uuid') // we we want to user import we have to use "type": "module" in package.json
 
 app.use(express.urlencoded({extended:true})); //So that express understands the data. When we send or recieve any data from/to the server using post or get we need to parse the data
 
@@ -12,17 +13,17 @@ app.use(express.static(path.join(__dirname,"public"))); //setting path for publi
 
 let posts = [
     {
-        id: "1a",
+        id: uuidv4(),
         username: "apnacollege",
         content: "I love coding",
     },
     {
-        id: "2b",
+        id: uuidv4(),
         username: "Ahmedraza",
         content: "You have to work hard",
     },
     {
-        id: "3c",
+        id: uuidv4(),
         username: "rahul",
         content: "I got my first internship",
     },
@@ -38,7 +39,8 @@ app.get("/posts/new", (req,res)=>{
 
 app.post("/posts", (req,res)=>{
     let {username, content}= req.body;
-    posts.push({username,content});
+    let id = uuidv4();
+    posts.push({id, username, content});
     res.redirect("/posts")
 });
 
