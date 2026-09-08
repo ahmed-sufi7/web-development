@@ -9,10 +9,26 @@ const connection = mysql.createConnection({
   password: "root",
 });
 
+let getRandomUser = () => {
+  return [
+    faker.string.uuid(),
+    faker.internet.username(),
+    faker.internet.email(),
+    faker.internet.password(),
+  ]
+};
+
+// console.log(getRandomUser());
+
 //To access Mysql in terminal (CLI): & "C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe" -u root -p
+q = "INSERT INTO user(id,username,email, password) values ?";
+let data = [];
+for (i = 0; i < 100; i++) {
+  data.push(getRandomUser());
+};
 
 try {
-  connection.query("SHOW TABLES", (err, results) => {
+  connection.query(q, [data], (err, results) => {
     if (err) throw err;
     console.log(results);
   });
@@ -21,14 +37,3 @@ try {
 }
 
 connection.end();
-
-let getRandomUser = () => {
-  return {
-    id: faker.string.uuid(),
-    username: faker.internet.username(),
-    email: faker.internet.email(),
-    password: faker.internet.password(),
-  };
-};
-
-console.log(getRandomUser());
