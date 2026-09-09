@@ -3,6 +3,10 @@ const mysql = require("mysql2");
 const express = require("express");
 const app = express();
 const path = require("path");
+const methodOverride = require("method-override");
+
+app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride("_method"));
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/views"));
@@ -44,6 +48,8 @@ app.get("/", (req, res) => {
   }
 });
 
+
+//show users route
 app.get("/users", (req, res) => {
   let q = "SELECT * FROM `user`";
   try {
@@ -57,6 +63,36 @@ app.get("/users", (req, res) => {
     res.send("some error in database");
   }
 });
+
+
+//edit route
+app.get("/users/:id/edit", (req, res) => {
+  let { id } = req.params;
+  let q = "SELECT * FROM `user` WHERE id = ?";
+  connection.query(q, [id], (err, result) => {
+    if (err) {
+      console.log(err);
+      return res.send("some error in database");
+    }
+    let user = result[0];
+    // console.log(user);
+    res.render("edit.ejs", {user});
+  });
+});
+
+//update (DB) route ie patch request
+app.patch("/users/:id", (req,res)=>{
+  res.send("updated")
+})
+
+
+/*
+  Errors from asynchronous database callbacks are handled inside the callback.
+*/
+/* } catch (err) {
+    console.log(err);
+    res.send("some error in database");
+  } */
 
 // connection.end(); //no connnection end as the app.get will automatically close the connection after the query is executed.
 
