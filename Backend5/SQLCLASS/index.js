@@ -48,7 +48,6 @@ app.get("/", (req, res) => {
   }
 });
 
-
 //show users route
 app.get("/users", (req, res) => {
   let q = "SELECT * FROM `user`";
@@ -64,7 +63,6 @@ app.get("/users", (req, res) => {
   }
 });
 
-
 //edit route
 app.get("/users/:id/edit", (req, res) => {
   let { id } = req.params;
@@ -76,15 +74,35 @@ app.get("/users/:id/edit", (req, res) => {
     }
     let user = result[0];
     // console.log(user);
-    res.render("edit.ejs", {user});
+    res.render("edit.ejs", { user });
   });
 });
 
 //update (DB) route ie patch request
-app.patch("/users/:id", (req,res)=>{
-  res.send("updated")
-})
+app.patch("/users/:id", (req, res) => {
+  let { id } = req.params;
+  let { password: formPass, username: newUsername } = req.body;
+  let q = `SELECT * FROM USER WHERE id = '${id}'`;
 
+  try {
+    connection.query(q, (err, result) => {
+      if (err) throw err;
+      let user = result[0];
+      if (formPass != user.password) {
+        res.send("wrong Password");
+      } else {
+        let q2 = `UPDATE user SET username='${newUsername}' WHERE id = '${id}' `;
+        connection.query(q2, (err, result)=>{
+          if (err) throw err;
+          res.redirect("/users")
+        })
+      }
+    });
+  } catch (err) {
+    console.log(err);
+    res.send("some error in Db");
+  }
+});
 
 /*
   Errors from asynchronous database callbacks are handled inside the callback.
