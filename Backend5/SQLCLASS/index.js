@@ -87,7 +87,7 @@ app.patch("/users/:id", (req, res) => {
   try {
     connection.query(q, (err, result) => {
       if (err) throw err;
-      let user = result[0];
+      let user = result[0] ;
       if (formPass != user.password) {
         res.send("wrong Password");
       } else {
