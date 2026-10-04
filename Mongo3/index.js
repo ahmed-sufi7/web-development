@@ -74,6 +74,14 @@ app.put("/chats/:id", async (req, res) => {
   res.redirect("/chats");
 });
 
+//destroy route
+app.delete("/chats/:id", async (req, res) => {
+  let { id } = req.params;
+  let deletedchat = await Chat.findByIdAndDelete(id);
+  console.log(deletedchat);
+  res.redirect("/chats");
+});
+
 // let chat1 = new Chat({
 //   from: "Neha",
 //   to: "Prya",
