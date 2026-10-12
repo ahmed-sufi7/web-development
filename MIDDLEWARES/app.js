@@ -15,10 +15,22 @@ const app = express();
 // });
 
 //logger
-app.use((req, res, next) => {
-  req.responseTime = new Date(Date.now()).toString();
-  console.log(req.method, req.hostname, req.path, req.responseTime);
-  next();
+// app.use((req, res, next) => {
+//   req.responseTime = new Date(Date.now()).toString();
+//   console.log(req.method, req.hostname, req.path, req.responseTime);
+//   next();
+// });
+
+const checkToken = (req, res, next) => {
+  let { token } = req.query;
+  if (token === "giveaccess") {
+    next();
+  }
+  res.send("ACCESS DENIES");
+};
+
+app.get("/api", checkToken, (req, res) => {
+  res.send("data");
 });
 
 app.get("/", (req, res) => {
