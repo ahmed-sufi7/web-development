@@ -14,13 +14,12 @@ const app = express();
 //   console.log("This is after next")
 // });
 
-
 //logger
-app.use((req,res,next)=>{
+app.use((req, res, next) => {
   req.responseTime = new Date(Date.now()).toString();
-  console.log(req.method,req.hostname, req.path, req.responseTime);
+  console.log(req.method, req.hostname, req.path, req.responseTime);
   next();
-})
+});
 
 app.get("/", (req, res) => {
   res.send("Hi, Im root");
@@ -28,6 +27,11 @@ app.get("/", (req, res) => {
 
 app.get("/random", (req, res) => {
   res.send("This is random page");
+});
+
+//404
+app.use((req, res) => {
+  res.status(404).send("Page not found!");
 });
 
 app.listen(8080, (req, res) => {
