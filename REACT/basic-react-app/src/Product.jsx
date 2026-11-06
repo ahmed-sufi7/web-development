@@ -1,11 +1,13 @@
 import "./Product.css";
 
-function Product({ title, price, features, features2 }) {
+function Product({ title, price, features }) {
+    let isDiscount = price > 30000;
+  let styles = { backgroundColor: isDiscount ? "pink" : "" };
   return (
-    <div className="Product">
+    <div className="Product" style={styles}>
       <h1>{title}</h1>
       <h3>Price: {price}</h3>
-      <p>Features: {features.map((feature)=><li>{feature}</li>)}</p>
+      {isDiscount && <p>Discount 5%</p>}
     </div>
   );
 }
