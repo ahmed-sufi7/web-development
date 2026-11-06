@@ -1,12 +1,12 @@
-import "./Product.css"
+import "./Product.css";
 
-function Product() {
+function Product({ title, price }) {
   return (
     <div className="Product">
-        <h1>Hi, I'm Title!</h1>
-        <h3>Hi, I'm Description!</h3>
+      <h1>{title}</h1>
+      <h3>Price: {price}</h3>
     </div>
-  )
+  );
 }
 
 export default Product;
