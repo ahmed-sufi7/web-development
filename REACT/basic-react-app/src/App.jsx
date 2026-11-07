@@ -1,11 +1,13 @@
-import "./App.css";
-import Title from "./Title.jsx";
-import Product from "./Product.jsx";
+// import "./App.css";
 import ProductTab from "./ProductTab.jsx";
 
 function App() {
+  
   return (
-    <ProductTab/>
+    <>
+    <h2 style={{textAlign: "center"}}>Blockbuster Deals | Shop Now</h2>
+      <ProductTab />
+    </>
   );
 }
 
