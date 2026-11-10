@@ -30,6 +30,7 @@ export default function TodoList() {
       <br />
       <button onClick={addNewTask}>Add</button>
       <br />
+      
       <br />
       <hr />
       <h4>Tasks todo</h4>
