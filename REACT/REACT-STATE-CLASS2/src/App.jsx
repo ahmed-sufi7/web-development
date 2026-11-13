@@ -8,7 +8,7 @@ import TodoList from "./TodoList";
 function App() {
   return (
     <>
-      <Ticket ticket={[0,1,2]}/>
+      <Lottery n={3} winningSum={15}/>
     </>
   );
 }
