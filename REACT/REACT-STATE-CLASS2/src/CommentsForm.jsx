@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useFormik } from "formik";
 
 const validate = (values) => {
@@ -25,7 +24,8 @@ export default function CommentsForm({ addNewComment }) {
     },
     validate,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      addNewComment(values);
+      formik.resetForm();
     },
   });
 
@@ -33,6 +33,7 @@ export default function CommentsForm({ addNewComment }) {
 
   return (
     <div>
+      <hr />
       <h4>Give a comment!</h4>
       <form onSubmit={formik.handleSubmit}>
         <label htmlFor="username">username</label>
