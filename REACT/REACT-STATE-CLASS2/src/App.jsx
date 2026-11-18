@@ -3,11 +3,12 @@ import CommentsForm from "./CommentsForm";
 import Form from "./Form";
 import Comment
  from "./Comment";
+import Counter from "./Counter";
+
 function App() {
   return (
     <>
-    {/* <CommentsForm/> */}
-      <Comment/>
+      <Counter/>
     </>
   );
 }
