@@ -17,12 +17,13 @@ export default function SearchBox() {
     );
     let jsonResponse = await response.json();
     let result = {
+      city: city,
       temp: jsonResponse.main.temp,
       tempMin: jsonResponse.main.temp_min,
       tempMax: jsonResponse.main.temp_max,
       humidity: jsonResponse.main.humidity,
       feelsLike: jsonResponse.main.feels_like,
-      description: jsonResponse.weather[0].description,
+      weather: jsonResponse.weather[0].description,
     };
     console.log(result);
   };
